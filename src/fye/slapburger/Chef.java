@@ -7,5 +7,8 @@ class Chef {
 
 
   //take an Order of MenuItems cooks MenuItems
+  public void cook() {
+    //TODO prepare menu Items from order
+  }
 
 }
