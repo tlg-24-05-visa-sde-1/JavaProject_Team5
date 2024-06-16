@@ -6,6 +6,7 @@ class MenuItem {
   private double price;
 
 
+
   public FoodCategory getFoodCategory() {
     return foodCategory;
   }
@@ -29,4 +30,5 @@ class MenuItem {
   public void setPrice(double price) {
     this.price = price;
   }
+
 }
