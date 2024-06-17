@@ -3,7 +3,7 @@ package fye.slapburger;
 import java.util.List;
 import java.util.Map;
 
-class Chef {
+public class Chef {
 
   private Order order = new Order();
 
@@ -34,4 +34,11 @@ class Chef {
     return countMap;
   }
 
+  public Order getOrder() {
+    return order;
+  }
+
+  public void setOrder(Order order) {
+    this.order = order;
+  }
 }
