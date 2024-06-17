@@ -1,17 +1,19 @@
 package fye.slapburger.app;
 
+import com.apps.util.Prompter;
 import fye.slapburger.Chef;
-import fye.slapburger.Order;
+import java.util.Scanner;
 
 public class BigBackBurgerApp {
 
-  Chef chef = new Chef();
+  private Chef chef = new Chef();
+  private final Prompter prompter = new Prompter(new Scanner(System.in));
 
   public void execute() {
     welcome();
     showMenu();
     placeOrder();
-    chef.getOrder().displayOrder();
+    confirmOrder();
     pay();
     cookOrder();
     serveOrder();
@@ -32,6 +34,8 @@ public class BigBackBurgerApp {
   }
 
   private void confirmOrder() {
+    chef.getOrder().displayOrder();
+
   }
 
   private void placeOrder() {
