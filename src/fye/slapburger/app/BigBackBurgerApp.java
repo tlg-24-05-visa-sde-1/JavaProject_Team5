@@ -3,6 +3,8 @@ package fye.slapburger.app;
 import static com.apps.util.Console.clear;
 import static com.apps.util.Console.pause;
 
+import fye.slapburger.FoodTruck;
+import fye.slapburger.Menu;
 import fye.slapburger.MenuItem;
 import com.apps.util.Prompter;
 import fye.slapburger.Chef;
@@ -12,18 +14,29 @@ import fye.slapburger.Payment;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class BigBackBurgerApp {
 
   private final Chef chef = new Chef();
+  private final Order order = new Order();
+  private final Menu menu = new Menu();
+  Map<MenuItem, Integer> orderMap;
+
   private final Prompter prompter = new Prompter(new Scanner(System.in));
+
+  public BigBackBurgerApp() {
+    FoodTruck foodTruck = new FoodTruck(chef, menu);
+  }
+
 
   public void execute() {
     welcome();
-//    showMenu();
-    placeOrder();
+    showMenu();
+    Map<MenuItem, Integer> orderMap = placeOrder();
 //    confirmOrder();
 //    pay();
 //    cookOrder();
@@ -50,7 +63,14 @@ public class BigBackBurgerApp {
 
   }
 
-  private void placeOrder() {
+  private Map<MenuItem, Integer> placeOrder() {
+
+    /*
+     * prompt for which items they want to order, after each selection, prompt for how many they want of that item
+     * store in a map whos key is MenuItem and Value is Integer Map<MenuItem, Integer> orderMap;
+     */
+
+    orderMap = new HashMap<MenuItem, Integer>();
     Order order = new Order();
     boolean ordering = true;
 
@@ -79,9 +99,18 @@ public class BigBackBurgerApp {
       System.out.println("Payment successful! Here is your order. Enjoy your Big Back.");
     }
     order.clearOrder();
+
+    return orderMap;
   }
 
   private void showMenu() {
+    try {
+      String menuFile = Files.readString(Path.of("resources/menu.txt"));
+      System.out.println("\n" + menuFile + "\n");
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+
   }
 
   private void welcome() {

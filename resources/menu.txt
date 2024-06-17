@@ -1,0 +1,11 @@
+               MAIN                          SIDES
+        ____________________         _____________________
+        [A] McDougie Burger           [D] Tayo Fries
+        [B] Hump Day Hot Dog          [E] Dougie Tots
+        [C] Nachos of Notre Dame      [F] Onion Rings
+
+                               DRINKS
+                        _____________________
+                       [G] Mexican Coke
+                       [H] Water
+                       [I] Sweet Tea
