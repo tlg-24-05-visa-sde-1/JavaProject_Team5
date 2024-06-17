@@ -3,7 +3,7 @@ package fye.slapburger;
 import java.util.List;
 
 public enum FoodCategory {
-    MAIN(List.of("McDougie Burger", "Hotdog", "Nachos")),
+    MAIN(List.of("McDougie Burger", "Hump Day Hotdog", "Nachos")),
     SIDES(List.of("Fries", "Elotes", "Tater Tots")),
     BEVERAGE(List.of("Mexican Coke, Water, Sweet Tea"));
 

@@ -10,7 +10,7 @@ public class Chef {
 
   //take an Order of MenuItems cooks MenuItems
   public void cook() {
-    //TODO prepare menu Items from order
+    //TODO prepare menu.txt Items from order
     Map<MenuItem, Integer> countMap = getMenuItemCount();
     System.out.println("Cooking Order Number: " + order.getID());
     for (Map.Entry<MenuItem, Integer> entry : countMap.entrySet()) {
