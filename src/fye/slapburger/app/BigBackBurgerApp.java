@@ -78,9 +78,8 @@ public class BigBackBurgerApp {
 //    welcome();
 //    showMenu();
     Map<MenuItem, Integer> orderMap = placeOrder();
-    for (Map.Entry<MenuItem, Integer> entry : orderMap.entrySet()) {
-      System.out.println(entry.getKey() + ". " + entry.getValue());
-    }
+    dump(orderMap);
+
 //    confirmOrder();
 //    pay();
 //    cookOrder();
@@ -106,13 +105,17 @@ public class BigBackBurgerApp {
     //TODO: give order total and take payment
   }
 
-//  private void confirmOrder() {
-//    chef.getOrder().displayOrder();
-//
-//  }
+  private void confirmOrder(Map<MenuItem, Integer> map) {
+    dump(map);
+  }
 
 
+ private void dump(Map<MenuItem, Integer> orderMap) {
+   for (Map.Entry<MenuItem, Integer> entry : orderMap.entrySet()) {
+     System.out.println(entry.getKey() + ". " + entry.getValue());
+   }
 
+ }
 
   private void showMenu() {
     try {
