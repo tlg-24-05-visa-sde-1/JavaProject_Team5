@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-class Order {
+public class Order {
 
   private List<MenuItem> items;
   private double totalPrice;
