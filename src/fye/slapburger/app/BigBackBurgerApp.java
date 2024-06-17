@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class BigBackBurgerApp {
 
-  private Chef chef = new Chef();
+  private final Chef chef = new Chef();
   private final Prompter prompter = new Prompter(new Scanner(System.in));
 
   public void execute() {
