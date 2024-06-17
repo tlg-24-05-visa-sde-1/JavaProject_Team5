@@ -1,7 +1,11 @@
 package fye.slapburger.app;
 
+import static com.apps.util.Console.*;
 import com.apps.util.Prompter;
 import fye.slapburger.Chef;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Scanner;
 
 public class BigBackBurgerApp {
@@ -45,6 +49,16 @@ public class BigBackBurgerApp {
   private void showMenu() {
   }
 
+
   private void welcome() {
+    prompter.prompt("Welcome to Big Back Burger");
+    try {
+      clear();
+      String bigBackBurgerFile = Files.readString(Path.of("resources/bigBackBurger.txt"));
+      System.out.println("\n" + bigBackBurgerFile + "\n");
+      pause(3500);
+    } catch (IOException e){
+        e.printStackTrace();
+    }
   }
 }

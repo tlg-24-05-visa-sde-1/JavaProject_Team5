@@ -5,8 +5,6 @@ class MenuItem {
   private String name;
   private double price;
 
-
-
   public FoodCategory getFoodCategory() {
     return foodCategory;
   }
