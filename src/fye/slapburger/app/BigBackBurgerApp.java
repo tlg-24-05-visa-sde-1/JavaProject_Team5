@@ -13,7 +13,6 @@ import java.util.*;
 
 public class BigBackBurgerApp {
 
-  private final Chef chef = new Chef();
   private final Order order = new Order();
   //private final Menu menu = new Menu();
   private final Prompter prompter = new Prompter(new Scanner(System.in));
@@ -89,14 +88,13 @@ public class BigBackBurgerApp {
 //    reviewFood();
   }
 
-  private void reviewFood(Prompter prompter) {
-    System.out.println("Leave A Review of Your Big Back Experience ");
-    String review = prompter.prompt("Enter your review: ");
-    chef.setOrder(order);
-    System.out.println("Thank you for your Big Feedback");
-
-
-  }
+//  private void reviewFood(Prompter prompter) {
+//    System.out.println("Leave A Review of Your Big Back Experience ");
+//    String review = prompter.prompt("Enter your review: ");
+//    chef.setOrder(order);
+//    System.out.println("Thank you for your Big Feedback");
+//
+//  }
 
   private void serveOrder() {
   }
@@ -108,10 +106,10 @@ public class BigBackBurgerApp {
     //TODO: give order total and take payment
   }
 
-  private void confirmOrder() {
-    chef.getOrder().displayOrder();
-
-  }
+//  private void confirmOrder() {
+//    chef.getOrder().displayOrder();
+//
+//  }
 
 
 

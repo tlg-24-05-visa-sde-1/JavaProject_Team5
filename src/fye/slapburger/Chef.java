@@ -7,6 +7,9 @@ public class Chef {
 
   private Order order = new Order();
 
+  public Chef(Order order) {
+    this.order = order;
+  }
 
   //take an Order of MenuItems cooks MenuItems
   public void cook() {
