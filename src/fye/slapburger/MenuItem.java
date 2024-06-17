@@ -1,6 +1,6 @@
 package fye.slapburger;
 
-class MenuItem {
+public class MenuItem {
   private FoodCategory foodCategory;
   private String name;
   private double price;

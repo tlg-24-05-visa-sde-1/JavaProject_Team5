@@ -1,11 +1,11 @@
 package fye.slapburger.app;
 
-import static com.apps.util.Console.*;
+import fye.slapburger.MenuItem;
 import com.apps.util.Prompter;
 import fye.slapburger.Chef;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import fye.slapburger.Order;
+
+import java.util.List;
 import java.util.Scanner;
 
 public class BigBackBurgerApp {
@@ -25,6 +25,7 @@ public class BigBackBurgerApp {
   }
 
   private void reviewFood() {
+
   }
 
   private void serveOrder() {
@@ -43,22 +44,34 @@ public class BigBackBurgerApp {
   }
 
   private void placeOrder() {
-    //TODO: Choose from menu items and save the order to a file;
+    Order order = new Order();
+    boolean ordering = true;
+
+
+    List<MenuItem> menu = order.getItems();
+
+    while (ordering) {
+
+      for (int i = 0; i < menu.size(); i++) {
+        System.out.println((i + 1) + ". " + menu.get(i));
+      }
+      String itemNumber = prompter.prompt("\nEnter the number of the item you want to add to your order (or 0 to finish): ");
+
+      int itemNumberInt = Integer.parseInt(itemNumber);
+
+      if (itemNumberInt == 0) {
+        ordering = false;
+      } else if (itemNumberInt > 0 && itemNumberInt <= menu.size()) {
+        order.addItem(menu.get(itemNumberInt - 1));
+      } else {
+        System.out.println("Invalid item number, please try again");
+      }
+    }
   }
 
   private void showMenu() {
   }
 
-
   private void welcome() {
-    prompter.prompt("Welcome to Big Back Burger");
-    try {
-      clear();
-      String bigBackBurgerFile = Files.readString(Path.of("resources/bigBackBurger.txt"));
-      System.out.println("\n" + bigBackBurgerFile + "\n");
-      pause(3500);
-    } catch (IOException e){
-        e.printStackTrace();
-    }
   }
 }
