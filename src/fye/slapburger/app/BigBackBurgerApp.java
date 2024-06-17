@@ -1,11 +1,17 @@
 package fye.slapburger.app;
 
+import static com.apps.util.Console.clear;
+import static com.apps.util.Console.pause;
+
 import fye.slapburger.MenuItem;
 import com.apps.util.Prompter;
 import fye.slapburger.Chef;
 import fye.slapburger.Order;
 import fye.slapburger.Payment;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
 import java.util.Scanner;
 
@@ -16,13 +22,13 @@ public class BigBackBurgerApp {
 
   public void execute() {
     welcome();
-    showMenu();
+//    showMenu();
     placeOrder();
-    confirmOrder();
-    pay();
-    cookOrder();
-    serveOrder();
-    reviewFood();
+//    confirmOrder();
+//    pay();
+//    cookOrder();
+//    serveOrder();
+//    reviewFood();
   }
 
   private void reviewFood() {
@@ -79,5 +85,13 @@ public class BigBackBurgerApp {
   }
 
   private void welcome() {
+    try {
+      String bigBackBurgerFile = Files.readString(Path.of("resources/bigBackBurger.txt"));
+      System.out.println("\n" + bigBackBurgerFile + "\n");
+      pause(3500);
+      clear();
+    } catch (IOException e){
+      e.printStackTrace();
+    }
   }
 }
