@@ -4,6 +4,7 @@ import fye.slapburger.MenuItem;
 import com.apps.util.Prompter;
 import fye.slapburger.Chef;
 import fye.slapburger.Order;
+import fye.slapburger.Payment;
 
 import java.util.List;
 import java.util.Scanner;
@@ -67,6 +68,11 @@ public class BigBackBurgerApp {
         System.out.println("Invalid item number, please try again");
       }
     }
+    order.displayOrder();
+    if (Payment.processPayment(order.getTotalPrice())) {
+      System.out.println("Payment successful! Here is your order. Enjoy your Big Back.");
+    }
+    order.clearOrder();
   }
 
   private void showMenu() {
