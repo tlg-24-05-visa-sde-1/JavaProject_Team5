@@ -90,15 +90,12 @@ public class BigBackBurgerApp {
   }
 
   private void serveOrder() {
-    clear();
     chef.serve();
-    blankLines(1);
   }
 
   private void cookOrder() {
     clear();
     chef.cook();
-    blankLines(1);
   }
 
   private void showMenu() {

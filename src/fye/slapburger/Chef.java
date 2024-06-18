@@ -24,7 +24,6 @@ public class Chef {
       System.out.println("Cooking " + entry.getValue() + " " + entry.getKey().getName());
     }
     System.out.println("------------------------");
-    blankLines(1);
   }
 
   //Serve Order
@@ -35,7 +34,7 @@ public class Chef {
     blankLines(1);
     System.out.println("This Order Contains: ");
     for (Map.Entry<MenuItem, Integer> entry : countMap.entrySet()) {
-      System.out.println(entry.getValue() + ": " + entry.getKey().getName());
+      System.out.println(entry.getValue() + ": " + entry.getKey().getName() + "[s]");
     }
   }
 
