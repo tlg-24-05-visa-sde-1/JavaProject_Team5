@@ -7,6 +7,8 @@ import com.apps.util.Prompter;
 import fye.slapburger.FoodCategory;
 import fye.slapburger.MenuItem;
 import fye.slapburger.Order;
+import fye.slapburger.Payment;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -20,16 +22,17 @@ public class BigBackBurgerApp {
 
   static List<MenuItem> menu = new ArrayList<MenuItem>();
   static Map<Character, MenuItem> menuMap = new HashMap<>();
+  private final Scanner scanner = new Scanner(System.in);
 
   static {
 
     menu.add(new MenuItem("McDougie Burger", 5.99, FoodCategory.MAIN));
     menu.add(new MenuItem("Hump Day Hotdog", 2.99, FoodCategory.MAIN));
-    menu.add(new MenuItem("Nachos", 4.99, FoodCategory.MAIN));
-    menu.add(new MenuItem("Cheesy Fries", 3.99, FoodCategory.SIDES));
+    menu.add(new MenuItem("Nachos of Notre Dame", 4.99, FoodCategory.MAIN));
+    menu.add(new MenuItem("Tayo Fries", 3.99, FoodCategory.SIDES));
     menu.add(new MenuItem("Tater Tots", 6.99, FoodCategory.SIDES));
     menu.add(new MenuItem("Onion Rings", 8.99, FoodCategory.SIDES));
-    menu.add(new MenuItem("Mexican Cola", 3.99, FoodCategory.BEVERAGE));
+    menu.add(new MenuItem("Mexican Coke", 3.99, FoodCategory.BEVERAGE));
     menu.add(new MenuItem("Water", 1.99, FoodCategory.BEVERAGE));
     menu.add(new MenuItem("Sweet Tea", 2.99, FoodCategory.SIDES));
 
@@ -73,8 +76,23 @@ public class BigBackBurgerApp {
         System.out.println("Invalid item selection, please select a valid item");
       }
     }
+    order.displayOrder();
 
     return orderMap;
+  }
+
+  private static void payForOrder(Scanner scanner, Order order) {
+    boolean paymentSuccess = false;
+    while (!paymentSuccess) {
+      System.out.println("Please select payment method (Debit Card or Cash): ");
+      String paymentMethod = scanner.nextLine().trim();
+      paymentSuccess = Payment.processPayment(order.getTotalPrice(), paymentMethod);
+      if (!paymentSuccess) {
+        System.out.println("Card payment failed! Jay's Debit cards were imaginary!");
+      } else {
+        System.out.println("Payment successful! Here is your order. Enjoy your Big Back Meal!");
+      }
+    }
   }
 
   public void execute() {
@@ -87,7 +105,7 @@ public class BigBackBurgerApp {
     while (keepOrder) {
       String confirmed = prompter.prompt("Confirm your order by pressing [1] or cancel with [0]");
       if (Integer.parseInt(confirmed) == 1) {
-//    pay();
+        payForOrder(scanner, order);
 //    cookOrder();
 //    serveOrder();
         showOrder(orderMap);
@@ -114,9 +132,12 @@ public class BigBackBurgerApp {
   private void cookOrder() {
   }
 
-  private void pay() {
-    //TODO: give order total and take payment
-  }
+//  private void pay() {
+//    public static boolean processPayment(double amount) {
+//      System.out.println("Processing payment of $" + amount);
+//      return true;
+//    }
+//
 
   private void showOrder(Map<MenuItem, Integer> map) {
     System.out.println("Your Order is: ");
