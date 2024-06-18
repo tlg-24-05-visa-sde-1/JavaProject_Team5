@@ -1,5 +1,8 @@
 package fye.slapburger;
 
+import static com.apps.util.Console.blankLines;
+
+import com.apps.util.Console;
 import java.util.List;
 import java.util.Map;
 
@@ -15,19 +18,25 @@ public class Chef {
   public void cook() {
     //TODO prepare menu.txt Items from order
     Map<MenuItem, Integer> countMap = getMenuItemCount();
-    System.out.println("Cooking Order Number: " + order.getID());
+    System.out.println("*********************");
+    System.out.println("Cooking Order # " + order.getID());
+    System.out.println("*********************");
     for (Map.Entry<MenuItem, Integer> entry : countMap.entrySet()) {
       System.out.println("Cooking " + entry.getValue() + " " + entry.getKey().getName());
     }
+    System.out.println("------------------------");
+    blankLines(1);
   }
 
   //Serve Order
   public void serve() {
     Map<MenuItem, Integer> countMap = getMenuItemCount();
-    System.out.println("Serving + " + order.getID());
+    System.out.println("Serving Order # " + order.getID());
+    System.out.println("*******************");
+    blankLines(1);
     System.out.println("This Order Contains: ");
     for (Map.Entry<MenuItem, Integer> entry : countMap.entrySet()) {
-      System.out.println(entry.getKey().getName() + ": " + entry.getValue());
+      System.out.println(entry.getValue() + ": " + entry.getKey().getName());
     }
   }
 
@@ -37,11 +46,4 @@ public class Chef {
     return countMap;
   }
 
-  public Order getOrder() {
-    return order;
-  }
-
-  public void setOrder(Order order) {
-    this.order = order;
-  }
 }

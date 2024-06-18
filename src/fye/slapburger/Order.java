@@ -1,5 +1,7 @@
 package fye.slapburger;
 
+import static com.apps.util.Console.blankLines;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -27,18 +29,22 @@ public class Order {
     return map;
   }
 
-
   public void addItem(MenuItem item) {
     items.add(item);
     totalPrice += item.getPrice();
   }
 
   public void displayOrder() {
-    System.out.println("Your Order:");
+    System.out.println("Your Order: ");
+    System.out.println("***********************");
     for (MenuItem item : items) {
       System.out.println(item);
     }
+    System.out.println("***********************");
+
     System.out.format("Total Price: %.2f\n", totalPrice);
+    System.out.println("----------------------");
+    blankLines(2);
   }
 
   public void clearOrder() {
@@ -50,16 +56,8 @@ public class Order {
     return items;
   }
 
-  public void setItems(List<MenuItem> items) {
-    this.items = items;
-  }
-
   public double getTotalPrice() {
     return totalPrice;
-  }
-
-  public void setTotalPrice(double totalPrice) {
-    this.totalPrice = totalPrice;
   }
 
   public int getID() {
