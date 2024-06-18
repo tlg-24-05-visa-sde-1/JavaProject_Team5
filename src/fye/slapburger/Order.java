@@ -64,11 +64,11 @@ public class Order {
     return ID;
   }
 
-  public String getNameOfCustomer() {
-    return nameOfCustomer;
-  }
-
-  public void setNameOfCustomer(String nameOfCustomer) {
-    this.nameOfCustomer = nameOfCustomer;
-  }
+//  public String getNameOfCustomer() {
+//    return nameOfCustomer;
+//  }
+//
+//  public void setNameOfCustomer(String nameOfCustomer) {
+//    this.nameOfCustomer = nameOfCustomer;
+//  }
 }
