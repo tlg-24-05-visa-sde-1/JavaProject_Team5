@@ -3,21 +3,24 @@ package fye.slapburger.app;
 import static com.apps.util.Console.clear;
 import static com.apps.util.Console.pause;
 
-import fye.slapburger.*;
 import com.apps.util.Prompter;
-
+import fye.slapburger.FoodCategory;
+import fye.slapburger.MenuItem;
+import fye.slapburger.Order;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
 
 public class BigBackBurgerApp {
 
-  private final Order order = new Order();
-  //private final Menu menu = new Menu();
-  private final Prompter prompter = new Prompter(new Scanner(System.in));
   static List<MenuItem> menu = new ArrayList<MenuItem>();
   static Map<Character, MenuItem> menuMap = new HashMap<>();
+
   static {
 
     menu.add(new MenuItem("McDougie Burger", 5.99, FoodCategory.MAIN));
@@ -30,7 +33,6 @@ public class BigBackBurgerApp {
     menu.add(new MenuItem("Water", 1.99, FoodCategory.BEVERAGE));
     menu.add(new MenuItem("Sweet Tea", 2.99, FoodCategory.SIDES));
 
-
     menuMap.put('A', menu.get(0));
     menuMap.put('B', menu.get(1));
     menuMap.put('C', menu.get(2));
@@ -42,6 +44,10 @@ public class BigBackBurgerApp {
     menuMap.put('I', menu.get(8));
 
   }
+
+  private final Order order = new Order();
+  //private final Menu menu = new Menu();
+  private final Prompter prompter = new Prompter(new Scanner(System.in));
 
   private Map<MenuItem, Integer> placeOrder() {
     Scanner scanner = new Scanner(System.in);
@@ -68,23 +74,30 @@ public class BigBackBurgerApp {
       }
     }
 
-
-
-
-      return orderMap;
+    return orderMap;
   }
 
   public void execute() {
 //    welcome();
 //    showMenu();
     Map<MenuItem, Integer> orderMap = placeOrder();
-    dump(orderMap);
+    showOrder(orderMap);
 
-//    confirmOrder();
+    boolean keepOrder = true;
+    while (keepOrder) {
+      String confirmed = prompter.prompt("Confirm your order by pressing [1] or cancel with [0]");
+      if (Integer.parseInt(confirmed) == 1) {
 //    pay();
 //    cookOrder();
 //    serveOrder();
-//    reviewFood();
+        showOrder(orderMap);
+        keepOrder = false;
+      } else {
+        orderMap.clear();
+        orderMap = placeOrder();
+      }
+    }
+
   }
 
 //  private void reviewFood(Prompter prompter) {
@@ -105,17 +118,19 @@ public class BigBackBurgerApp {
     //TODO: give order total and take payment
   }
 
-  private void confirmOrder(Map<MenuItem, Integer> map) {
+  private void showOrder(Map<MenuItem, Integer> map) {
+    System.out.println("Your Order is: ");
     dump(map);
+
   }
 
 
- private void dump(Map<MenuItem, Integer> orderMap) {
-   for (Map.Entry<MenuItem, Integer> entry : orderMap.entrySet()) {
-     System.out.println(entry.getKey() + ". " + entry.getValue());
-   }
+  private void dump(Map<MenuItem, Integer> orderMap) {
+    for (Map.Entry<MenuItem, Integer> entry : orderMap.entrySet()) {
+      System.out.println(entry.getKey() + ". " + entry.getValue());
+    }
 
- }
+  }
 
   private void showMenu() {
     try {
@@ -133,7 +148,7 @@ public class BigBackBurgerApp {
       System.out.println("\n" + bigBackBurgerFile + "\n");
       pause(3500);
       clear();
-    } catch (IOException e){
+    } catch (IOException e) {
       e.printStackTrace();
     }
   }
