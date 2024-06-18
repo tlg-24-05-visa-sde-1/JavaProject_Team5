@@ -38,8 +38,10 @@ public class BigBackBurgerApp {
       if (Integer.parseInt(confirmed) == 1) {
         payForOrder(order);
         chef = new Chef(order);
-        cookOrder();
-        serveOrder();
+        chef.cook();
+        blankLines(2);
+        pause(2500);
+        chef.serve();
         keepOrder = false;
       } else {
         order.clearOrder();
@@ -87,14 +89,6 @@ public class BigBackBurgerApp {
     }
     order.displayOrder();
     return orderMap;
-  }
-
-  private void serveOrder() {
-    chef.serve();
-  }
-
-  private void cookOrder() {
-    chef.cook();
   }
 
   private void showMenu() {
