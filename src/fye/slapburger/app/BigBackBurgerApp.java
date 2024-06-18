@@ -26,11 +26,7 @@ public class BigBackBurgerApp {
   public void execute() {
 
     welcome();
-
-    Map<MenuItem, Integer> orderMap;
-
-    orderMap = placeOrder();
-
+    Map<MenuItem, Integer> orderMap = placeOrder();
     boolean keepOrder = true;
     while (keepOrder) {
       String confirmed = prompter.prompt("Confirm your order by pressing [1] or cancel with [0] ",
@@ -39,8 +35,6 @@ public class BigBackBurgerApp {
         payForOrder(order);
         chef = new Chef(order);
         chef.cook();
-        blankLines(2);
-        pause(2500);
         chef.serve();
         keepOrder = false;
       } else {

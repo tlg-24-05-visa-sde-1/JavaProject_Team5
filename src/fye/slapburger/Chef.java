@@ -1,6 +1,7 @@
 package fye.slapburger;
 
 import static com.apps.util.Console.blankLines;
+import static com.apps.util.Console.pause;
 
 import java.util.List;
 import java.util.Map;
@@ -23,6 +24,8 @@ public class Chef {
       System.out.println("Cooking " + entry.getValue() + " " + entry.getKey().getName());
     }
     System.out.println("------------------------");
+    blankLines(2);
+    pause(3500);
   }
 
   //Serve Order
@@ -35,7 +38,7 @@ public class Chef {
     System.out.println("----------------------");
     blankLines(1);
     for (Map.Entry<MenuItem, Integer> entry : countMap.entrySet()) {
-      System.out.println(entry.getValue() + ": " + entry.getKey().getName() + "[s]");
+      System.out.println("Amount: " + entry.getValue() + ": " + entry.getKey().getName() );
     }
   }
 
