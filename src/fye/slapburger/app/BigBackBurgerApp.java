@@ -79,7 +79,7 @@ public class BigBackBurgerApp {
       showMenu();
       String input = prompter.prompt(
           "Enter the letter of the item you wish to order ** or [1] to finished ** : ",
-          "[A-I|0]", "\nPlease enter a letter from the Menu ");
+          "[A-I|1]", "\nPlease enter a letter from the Menu ");
       if (input.equals("1")) {
         ordering = false;
       } else if (input.length() == 1 && MENU_MAP.containsKey(input.charAt(0))) {
