@@ -21,7 +21,7 @@ public class BigBackBurgerApp {
 
   private static final Prompter prompter = new Prompter(new Scanner(System.in));
   private final Order order = new Order();
-  Chef chef;
+  private Chef chef;
 
   public void execute() {
 
@@ -56,7 +56,8 @@ public class BigBackBurgerApp {
     boolean paymentSuccess = false;
     while (!paymentSuccess) {
       String paymentMethod = prompter.prompt(
-          "Please select payment method ([D]ebit-Card or [C]ash): ", "[D|C]", "\nMust choose D or C");
+          "Please select payment method ([D]ebit-Card or [C]ash): ", "[D|C]",
+          "\nMust choose D or C");
       paymentSuccess = Payment.processPayment(order.getTotalPrice(), paymentMethod);
       if (!paymentSuccess) {
         prompter.info("Card payment FAILED! Jay's Debit cards were imaginary!");
@@ -77,9 +78,9 @@ public class BigBackBurgerApp {
       clear();
       showMenu();
       String input = prompter.prompt(
-          "Enter the letter of the item you wish to order ** or [0] to finished ** : ",
+          "Enter the letter of the item you wish to order ** or [1] to finished ** : ",
           "[A-I|0]", "\nPlease enter a letter from the Menu ");
-      if (input.equals("0")) {
+      if (input.equals("1")) {
         ordering = false;
       } else if (input.length() == 1 && MENU_MAP.containsKey(input.charAt(0))) {
         MenuItem selectedItem = MENU_MAP.get(input.charAt(0));
