@@ -54,13 +54,13 @@ public class BigBackBurgerApp {
     boolean paymentSuccess = false;
     while (!paymentSuccess) {
       String paymentMethod = prompter.prompt(
-          "Please select payment method ([D]ebit-Card or [C]ash): ", "[D|C]", "Must choose D or C");
+          "Please select payment method ([D]ebit-Card or [C]ash): ", "[D|C]", "\nMust choose D or C");
       paymentSuccess = Payment.processPayment(order.getTotalPrice(), paymentMethod);
       if (!paymentSuccess) {
-        prompter.info("Card payment failed! Jay's Debit cards were imaginary!");
+        prompter.info("Card payment FAILED! Jay's Debit cards were imaginary!");
         blankLines(1);
       } else {
-        prompter.info("Payment successful! Here is your order. Enjoy your Big Back Meal!");
+        prompter.info("Payment SUCCESSFUL! Here is your order. Enjoy your Big Back Meal!");
         blankLines(1);
       }
     }
@@ -94,7 +94,6 @@ public class BigBackBurgerApp {
   }
 
   private void cookOrder() {
-    clear();
     chef.cook();
   }
 
