@@ -8,5 +8,4 @@ class Main {
     BigBackBurgerApp app = new BigBackBurgerApp();
     app.execute();
   }
-
 }
