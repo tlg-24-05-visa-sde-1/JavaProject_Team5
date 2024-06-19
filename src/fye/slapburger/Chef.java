@@ -36,10 +36,12 @@ public class Chef {
     System.out.println("**********************");
     System.out.println("This Order Contains: ");
     System.out.println("----------------------");
-    blankLines(1);
     for (Map.Entry<MenuItem, Integer> entry : countMap.entrySet()) {
-      System.out.println("Amount: " + entry.getValue() + ": " + entry.getKey().getName() );
+      System.out.println(entry.getValue() + ": " + entry.getKey().getName() );
     }
+    blankLines(1);
+    System.out.println("----------------------");
+    blankLines(3);
   }
 
   private Map<MenuItem, Integer> getMenuItemCount() {

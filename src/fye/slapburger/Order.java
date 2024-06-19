@@ -12,7 +12,8 @@ public class Order {
   private List<MenuItem> items;
   private double totalPrice;
   private int ID = 0;
-  private String nameOfCustomer;
+//  private String nameOfCustomer;
+
 
   public Order() {
     items = new ArrayList<MenuItem>();

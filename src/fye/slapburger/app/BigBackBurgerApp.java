@@ -25,7 +25,7 @@ public class BigBackBurgerApp {
 
   public void execute() {
 
-    welcome();
+    intro();
     Map<MenuItem, Integer> orderMap = placeOrder();
     boolean keepOrder = true;
     while (keepOrder) {
@@ -69,11 +69,11 @@ public class BigBackBurgerApp {
     boolean ordering = true;
 
     while (ordering) {
-      clear();
       showMenu();
+      order.displayOrder();
       String input = prompter.prompt(
-          "Enter the letter of the item you wish to order ** or [1] to finished ** : ",
-          "[A-I|1]", "\nPlease enter a letter from the Menu ");
+          "Enter the letter of the item you wish to order [Press [1] to finish]  : ",
+          "[A-I|a-i|1]", "\nPlease enter a letter from the Menu ").toUpperCase();
       if (input.equals("1")) {
         ordering = false;
       } else if (input.length() == 1 && MENU_MAP.containsKey(input.charAt(0))) {
@@ -82,12 +82,14 @@ public class BigBackBurgerApp {
         orderMap.put(selectedItem, orderMap.getOrDefault(selectedItem, 0) + 1);
       }
     }
+    clear();
     order.displayOrder();
     return orderMap;
   }
 
   private void showMenu() {
     try {
+      clear();
       String menuFile = Files.readString(Path.of("resources/menu.txt"));
       prompter.info("\n" + menuFile + "\n");
     } catch (IOException e) {
@@ -95,7 +97,7 @@ public class BigBackBurgerApp {
     }
   }
 
-  private void welcome() {
+  private void intro() {
     try {
       String bigBackBurgerFile = Files.readString(Path.of("resources/bigBackBurger.txt"));
       prompter.info("\n" + bigBackBurgerFile + "\n");
@@ -104,6 +106,7 @@ public class BigBackBurgerApp {
       e.printStackTrace();
     }
   }
+
 
   //  private void reviewFood(Prompter prompter) {
 //    System.out.println("Leave A Review of Your Big Back Experience ");
