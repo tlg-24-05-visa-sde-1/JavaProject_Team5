@@ -20,12 +20,9 @@ public class Chef {
     System.out.println("**********************");
     System.out.println("Cooking Order # " + order.getID());
     System.out.println("**********************");
-    for (Map.Entry<MenuItem, Integer> entry : countMap.entrySet()) {
-      System.out.println("Cooking " + entry.getValue() + " " + entry.getKey().getName());
-    }
-    System.out.println("------------------------");
+
     blankLines(2);
-    pause(3500);
+    pause(5500);
   }
 
   //Serve Order
@@ -39,7 +36,8 @@ public class Chef {
     for (Map.Entry<MenuItem, Integer> entry : countMap.entrySet()) {
       System.out.println(entry.getValue() + ": " + entry.getKey().getName() );
     }
-    blankLines(1);
+    blankLines(2);
+    System.out.println("Here is your order. Enjoy your Big Back Meal!");
     System.out.println("----------------------");
     blankLines(3);
   }

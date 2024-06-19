@@ -7,7 +7,7 @@ class Main implements SplashApp {
 
   public static void main(String[] args) {
     Main mainApp = new Main();
-    mainApp.welcome("images/steakfries.png", "images/truck.png");
+    mainApp.welcome("images/steakfries.png", "images/meal.png");
     mainApp.start();
   }
 
