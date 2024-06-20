@@ -36,13 +36,13 @@ public class Order implements Serializable {
 
   public void displayOrder() {
     System.out.println("Your Order: ");
-    System.out.println("***********************");
+    System.out.println("**************************");
     for (MenuItem item : items) {
       System.out.println(item);
     }
-    System.out.println("***********************");
-    System.out.format("Total Price: %.2f\n", totalPrice);
-    System.out.println("----------------------");
+    System.out.println("**************************");
+    System.out.format("Total Price: $ %.2f\n", totalPrice);
+    System.out.println("--------------------------");
     blankLines(2);
   }
 
