@@ -62,12 +62,4 @@ public class Order implements Serializable {
   public int getID() {
     return ID;
   }
-
-//  public String getNameOfCustomer() {
-//    return nameOfCustomer;
-//  }
-//
-//  public void setNameOfCustomer(String nameOfCustomer) {
-//    this.nameOfCustomer = nameOfCustomer;
-//  }
 }

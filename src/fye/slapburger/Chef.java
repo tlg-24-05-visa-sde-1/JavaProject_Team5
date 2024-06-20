@@ -34,7 +34,7 @@ public class Chef {
     System.out.println("This Order Contains: ");
     System.out.println("----------------------");
     for (Map.Entry<MenuItem, Integer> entry : countMap.entrySet()) {
-      System.out.println(entry.getValue() + ": " + entry.getKey().getName() );
+      System.out.println(entry.getValue() + ": " + entry.getKey().getName());
     }
     blankLines(2);
     System.out.println("Here is your order. Enjoy your Big Back Meal!");
