@@ -17,9 +17,9 @@ public class Chef {
   //take an Order of MenuItems cooks MenuItems
   public void cook() {
     Map<MenuItem, Integer> countMap = getMenuItemCount();
-    System.out.println("***************************");
+    System.out.println("*****************");
     System.out.println("Cooking Order # " + order.getID());
-    System.out.println("***************************");
+    System.out.println("*****************");
 
     blankLines(2);
     pause(5500);
@@ -28,18 +28,18 @@ public class Chef {
   //Serve Order
   public void serve() {
     Map<MenuItem, Integer> countMap = getMenuItemCount();
-    System.out.println("******************************");
+    System.out.println("***************************");
     System.out.println("Serving Order # " + order.getID());
-    System.out.println("******************************");
+    System.out.println("***************************");
     System.out.println("This Order Contains: ");
-    System.out.println("-------------------------------");
+    System.out.println("---------------------------");
     for (Map.Entry<MenuItem, Integer> entry : countMap.entrySet()) {
       System.out.println(entry.getValue() + "x  | " + entry.getKey().getName());
     }
     blankLines(2);
-    System.out.println("----------------------------------------------");
+    System.out.println("---------------------------------------------");
     System.out.println("Here is your order. Enjoy your Big Back Meal!");
-    System.out.println("----------------------------------------------");
+    System.out.println("---------------------------------------------");
     blankLines(3);
   }
 

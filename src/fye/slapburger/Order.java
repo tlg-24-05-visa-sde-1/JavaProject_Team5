@@ -35,14 +35,15 @@ public class Order implements Serializable {
   }
 
   public void displayOrder() {
+    Map<MenuItem, Integer> map = countEachItem(items);
     System.out.println("Your Order: ");
-    System.out.println("**************************");
-    for (MenuItem item : items) {
-      System.out.println(item);
+    System.out.println("****************************");
+    for (Map.Entry<MenuItem, Integer> entry : map.entrySet()) {
+      System.out.println(entry.getValue() + "x  | " + entry.getKey().getName());
     }
-    System.out.println("**************************");
+    System.out.println("****************************");
     System.out.format("Total Price: $ %.2f\n", totalPrice);
-    System.out.println("--------------------------");
+    System.out.println("----------------------------");
     blankLines(2);
   }
 

@@ -30,7 +30,7 @@ public class BigBackBurgerApp {
     boolean keepOrder = true;
     while (keepOrder) {
       String confirmed = prompter.prompt("Confirm your order by pressing [1] or cancel with [0] ",
-          "[1|0]", "\nPlease Select [1] 0r [0]");
+          "[1|0]", "\nPlease Select [1] 0r [0]\n");
       if (Integer.parseInt(confirmed) == 1) {
         payForOrder(order);
         chef = new Chef(order);
